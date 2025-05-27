@@ -196,7 +196,7 @@ On first launch, you'll want to make sure Lazy.nvim installs your plugins, Mason
 
 Run the following commands inside neovim
 
-```
+```vim
 :Lazy Sync
 :Mason Update
 :TSUpdate
