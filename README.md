@@ -201,5 +201,5 @@ Run the following commands inside neovim
 ## Todo
 
 - Add more functionality to which-key (and keymaps in general)
-- Figure out toggleable columns with git info, line numbers
-- Document the full tech stack of my neovim configuration on this page
+- Add toggleable columns with git info, line numbers
+- Find more enhancements to add that don't cause bloat
