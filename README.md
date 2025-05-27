@@ -6,7 +6,7 @@ I initially tried LazyVim, but found that some of its defaults - like aggressive
 
 This repo documents my personal Neovim configuration. It's tailored to my preferences, but feel free to explore, use, or suggest improvements.
 
-## tech stack
+## 🧰 Tech Stack
 
 This Neovim config is built from scratch using [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugin manager. It favors a minimalist, scriptable, and fast editing environment without the heavy abstractions of prebuilt frameworks like LazyVim.
 
@@ -88,7 +88,7 @@ Runs on `BufWritePost`, manually triggered via `<leader>l`
 - Explorer toggle: `<leader>e`
 - Scratchpad: `<leader>ss`
 
-### 🔧 General Settings
+### 🔧 Folder Structure
 
 ```text
 ~/.config/nvim/
@@ -97,9 +97,9 @@ Runs on `BufWritePost`, manually triggered via `<leader>l`
 └── plugins/ # plugin modules (treesitter, formatting, etc.)
 ```
 
-## installation and prerequisites
+## 💾 Installation and Prerequisites
 
-### neovim installation
+### 🔧 Neovim Installation
 
 Install neovim unstable repo and install from a nightly build. Also includes key packages that will be needed for basic functionality.
 
@@ -109,7 +109,7 @@ sudo apt update
 sudo apt install neovim ripgrep fd-find git curl unzip
 ```
 
-### aliasing
+### 🔗 Aliasing
 
 Added this to my `~/.bashrc`
 
@@ -119,7 +119,7 @@ alias vim='nvim'
 alias vi='/usr/bin/vim'
 ```
 
-### lazy.nvim installation
+### 📦 Lazy.nvim Installation
 
 Install `lazy.nvim` plugin manager bare bones.
 
@@ -130,7 +130,7 @@ rm -rf ~/.local/share/nvim/lazy/lazy.nvim/.git
 
 It installs to `~/.local/share/nvim/lazy/lazy.nvim/`
 
-### prerequisites
+### 🧪 Prerequisites
 
 The following packages are needed to enable all functionality in my neovim stack, such as linting, formatting, etc.
 
@@ -169,15 +169,15 @@ Install luarocks linter
 sudo luarocks install luacheck
 ```
 
-### nerd fonts (needed for ligatures)
+### 🎨 Nerd Fonts (for Ligatures)
 
 I'm using `FiraCode Nerd Font Mono` 11-point Regular, with antialiasing enabled.
 
 [Download it here](https://www.nerdfonts.com/font-downloads).
 
-## install lazyjim
+## 🚀 Install lazyjim
 
-### clone repo
+### 📥 Clone Repo
 
 Backup the contents of your existing `.config/nvim` folder if it already exists.
 
@@ -186,7 +186,7 @@ mkdir -p ~/.config/nvim/
 git clone https://github.com/gtwy/lazyjim ~/.config/nvim
 ```
 
-### start neovim
+### ▶️ Start Neovim
 
 On first launch, you'll want to make sure Lazy.nvim installs your plugins, Mason installs required tools, and Treesitter downloads its language parsers.
 
@@ -198,7 +198,7 @@ Run the following commands inside neovim
 :TSUpdate
 ```
 
-## Todo
+## 📝 Todo
 
 - Add more functionality to which-key (and keymaps in general)
 - Add toggleable columns with git info, line numbers
