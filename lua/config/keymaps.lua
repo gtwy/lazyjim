@@ -45,9 +45,29 @@ end, { desc = "Grep in Files" })
 -- Scratchpad
 vim.keymap.set("n", "<leader>ss", function()
 	require("snacks.scratch").open()
-end, { desc = "Scratchpad" })
+end, { desc = "Open Scratchpad" })
 
 -- Git signs toggle (statuscolumn handles display)
 vim.keymap.set("n", "<leader>ug", function()
 	require("snacks.git").blame_line()
 end, { desc = "Git for Current Line" })
+
+-- Numberlines toggle
+vim.keymap.set("n", "<leader>nn", function()
+	if vim.wo.number then
+		vim.wo.number = false
+		vim.wo.relativenumber = false
+	else
+		vim.wo.number = true
+		vim.wo.relativenumber = false
+	end
+end, { desc = "Toggle lines" })
+vim.keymap.set("n", "<leader>nl", function()
+	if vim.wo.relativenumber then
+		vim.wo.relativenumber = false
+		vim.wo.number = false
+	else
+		vim.wo.relativenumber = true
+		vim.wo.number = false
+	end
+end, { desc = "Toggle relative lines" })
