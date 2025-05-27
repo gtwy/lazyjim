@@ -1,11 +1,12 @@
+-- luacheck: globals vim
 return {
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		-- priority = 1000,
-		-- config = function()
-		--   vim.cmd.colorscheme("rose-pine")
-		-- end,
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("rose-pine")
+		end,
 	},
 	{
 		"AlexvZyl/nordic.nvim",
@@ -18,7 +19,14 @@ return {
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
-			require("kanagawa").load()
+			require("kanagawa").setup({
+				theme = "wave",
+				-- background = {
+				-- 	dark = "dragon",
+				-- 	light = "lotus",
+				-- },
+			})
+			-- vim.cmd("colorscheme kanagawa")
 		end,
 	},
 	-- {

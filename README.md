@@ -20,7 +20,9 @@ This Neovim config is built from scratch using [lazy.nvim](https://github.com/fo
 
 | Plugin                        | Purpose                                                    |
 | ----------------------------- | ---------------------------------------------------------- |
-| `rose-pine/neovim`            | Elegant colorscheme (dark aesthetic)                       |
+| `rose-pine/neovim`            | Elegant, dark colorscheme _(default)_                      |
+| `rebelot/kanagawa.nvim`       | Soft, slate colorscheme                                    |
+| `AlexvZyl/nordic.nvim`        | Light blue colorscheme                                     |
 | `nvim-lualine/lualine.nvim`   | Statusline with icons and theming                          |
 | `akinsho/bufferline.nvim`     | Visual buffer tabline                                      |
 | `nvim-tree/nvim-web-devicons` | Filetype icons                                             |
