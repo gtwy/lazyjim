@@ -12,7 +12,7 @@ this repo exists to document my text editor settings for my own uses, but you ar
 
 ## neovim installation
 
-```
+```bash
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
 sudo apt install neovim ripgrep fd-find git curl unzip
@@ -22,7 +22,8 @@ sudo apt install neovim ripgrep fd-find git curl unzip
 
 install lazy.nvim plugin manager without any other bloat
 
-```
+```bash
+mkdir -p ~/.config/nvim/
 git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/lazy/lazy.nvim
 rm -rf ~/.local/share/nvim/lazy/lazy.nvim/.git
 ```
