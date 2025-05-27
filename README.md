@@ -119,6 +119,8 @@ alias vim='nvim'
 alias vi='/usr/bin/vim'
 ```
 
+You may want to run `which vim` first to see if yours is actually in `/usr/bin/`
+
 ### 📦 Lazy.nvim Installation
 
 Install `lazy.nvim` plugin manager bare bones.
