@@ -30,6 +30,7 @@ This Neovim config is built from scratch using [lazy.nvim](https://github.com/fo
 | `echasnovski/mini.icons`        | Optional icon enhancements            |
 | `folke/snacks.nvim`             | Scratchpad and Git UI tools           |
 | `nvim-telescope/telescope.nvim` | File browser, fuzzy file, finder tool |
+| `folke/persistence.nvim`        | Automated session management          |
 
 ### 🔤 Syntax & Treesitter
 
