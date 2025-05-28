@@ -1,12 +1,12 @@
 -- luacheck: globals vim
-local snacks = require("snacks")
+-- local snacks = require("snacks")
 
 -- get root dir
-local function get_root()
-	local cwd = vim.fn.getcwd()
-	local root = vim.fs.find({ ".git" }, { upward = true, type = "directory", path = cwd })[1]
-	return root and vim.fs.dirname(root) or cwd
-end
+-- local function get_root()
+-- 	local cwd = vim.fn.getcwd()
+-- 	local root = vim.fs.find({ ".git" }, { upward = true, type = "directory", path = cwd })[1]
+-- 	return root and vim.fs.dirname(root) or cwd
+-- end
 
 -- turn mouse on and off
 vim.keymap.set("n", "<leader>m", function()
@@ -25,7 +25,7 @@ vim.keymap.set("x", "<", "<gv", { noremap = true, silent = true })
 vim.keymap.set("x", ">", ">gv", { noremap = true, silent = true })
 
 -- lint on key press
-vim.keymap.set("n", "<leader>l", function()
+vim.keymap.set("n", "<leader>x", function()
 	require("lint").try_lint()
 end, { desc = "Lint current file" })
 
@@ -54,7 +54,7 @@ vim.keymap.set("n", "<leader>ug", function()
 end, { desc = "Git for Current Line" })
 
 -- Numberlines toggle
-vim.keymap.set("n", "<leader>nn", function()
+vim.keymap.set("n", "<leader>ln", function()
 	if vim.wo.number then
 		vim.wo.number = false
 		vim.wo.relativenumber = false
@@ -62,8 +62,8 @@ vim.keymap.set("n", "<leader>nn", function()
 		vim.wo.number = true
 		vim.wo.relativenumber = false
 	end
-end, { desc = "Toggle lines" })
-vim.keymap.set("n", "<leader>nl", function()
+end, { desc = "Toggle absolute lines" })
+vim.keymap.set("n", "<leader>lr", function()
 	if vim.wo.relativenumber then
 		vim.wo.relativenumber = false
 		vim.wo.number = false
