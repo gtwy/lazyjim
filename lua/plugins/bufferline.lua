@@ -23,7 +23,7 @@ return {
 			-- Optional keymaps
 			vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
 			vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev buffer" })
-			vim.keymap.set("n", "<leader>bd", "<cmd>Bdelete<CR>", { desc = "Delete Buffer" })
+			vim.keymap.set("n", "<leader>bd", "<cmd>Bdelete<CR>", { desc = "Exit buffer" })
 		end,
 	},
 }

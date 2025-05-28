@@ -28,23 +28,6 @@ return {
 				align = "left", -- Left-align content for readability
 			},
 			expand = 5,
-			-- defaults = {
-			-- 	mode = { "n", "v" },
-			-- 	["<leader>bd"] = { "<cmd>bd<cr>", "Delete buffer" },
-			-- 	["<leader>f"] = { name = "+file/find" },
-			-- 	["<leader>s"] = { name = "+scratch" },
-			-- 	["<leader>u"] = { name = "+ui" },
-			-- 	["<leader>g"] = { name = "+git" },
-			-- },
 		},
-		-- keys = {
-		-- 	{
-		-- 		"<leader>?",
-		-- 		function()
-		-- 			require("which-key").show({ global = false })
-		-- 		end,
-		-- 		desc = "Buffer Local Keymaps (which-key)",
-		-- 	},
-		-- },
 	},
 }

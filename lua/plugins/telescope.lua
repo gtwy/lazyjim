@@ -53,6 +53,11 @@ return {
 				require("telescope.builtin").find_files({ cwd = root })
 			end, vim.tbl_extend("force", opts, { desc = "Find files" }))
 
+			keymap("n", "<space><space>", function()
+				local root = Snacks.git.get_root() or vim.loop.cwd()
+				require("telescope.builtin").find_files({ cwd = root })
+			end, { noremap = true, silent = true })
+
 			keymap("n", "<leader>fg", function()
 				local root = Snacks.git.get_root() or vim.loop.cwd()
 				require("telescope.builtin").live_grep({ cwd = root })
@@ -75,12 +80,12 @@ return {
 				"<cmd>Telescope help_tags<CR>",
 				vim.tbl_extend("force", opts, { desc = "Search help" })
 			)
-			keymap(
-				"n",
-				"<leader>jm",
-				"<cmd>Telescope marks<CR>",
-				vim.tbl_extend("force", opts, { desc = "Jump to mark" })
-			)
+			-- keymap(
+			-- 	"n",
+			-- 	"<leader>jm",
+			-- 	"<cmd>Telescope marks<CR>",
+			-- 	vim.tbl_extend("force", opts, { desc = "Jump to mark" })
+			-- )
 			-- keymap(
 			-- 	"n",
 			-- 	"<leader>fR",

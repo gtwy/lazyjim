@@ -9,7 +9,7 @@
 -- end
 
 -- turn mouse on and off
-vim.keymap.set("n", "<leader>m", function()
+vim.keymap.set("n", "<leader>a", function()
 	local mouse_setting = vim.o.mouse
 	if mouse_setting == "" then
 		vim.opt.mouse = "a"
@@ -25,7 +25,7 @@ vim.keymap.set("x", "<", "<gv", { noremap = true, silent = true })
 vim.keymap.set("x", ">", ">gv", { noremap = true, silent = true })
 
 -- lint on key press
-vim.keymap.set("n", "<leader>x", function()
+vim.keymap.set("n", "<leader>ll", function()
 	require("lint").try_lint()
 end, { desc = "Lint current file" })
 
@@ -49,7 +49,7 @@ vim.keymap.set("n", "<leader>ss", function()
 end, { desc = "Open Scratchpad" })
 
 -- Git signs toggle (statuscolumn handles display)
-vim.keymap.set("n", "<leader>ug", function()
+vim.keymap.set("n", "<leader>gb", function()
 	require("snacks.git").blame_line()
 end, { desc = "Git for Current Line" })
 
