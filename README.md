@@ -18,17 +18,18 @@ This Neovim config is built from scratch using [lazy.nvim](https://github.com/fo
 
 ### 🎨 UI & UX Plugins
 
-| Plugin                        | Purpose                                                    |
-| ----------------------------- | ---------------------------------------------------------- |
-| `rose-pine/neovim`            | Elegant, dark colorscheme _(default)_                      |
-| `rebelot/kanagawa.nvim`       | Soft, slate colorscheme                                    |
-| `AlexvZyl/nordic.nvim`        | Light blue colorscheme                                     |
-| `nvim-lualine/lualine.nvim`   | Statusline with icons and theming                          |
-| `akinsho/bufferline.nvim`     | Visual buffer tabline                                      |
-| `nvim-tree/nvim-web-devicons` | Filetype icons                                             |
-| `folke/which-key.nvim`        | Popup keybinding hints                                     |
-| `echasnovski/mini.icons`      | Optional icon enhancements                                 |
-| `folke/snacks.nvim`           | Custom file picker, explorer, scratchpad, and Git UI tools |
+| Plugin                          | Purpose                               |
+| ------------------------------- | ------------------------------------- |
+| `rose-pine/neovim`              | Elegant, dark colorscheme _(default)_ |
+| `rebelot/kanagawa.nvim`         | Soft, slate colorscheme               |
+| `AlexvZyl/nordic.nvim`          | Light blue colorscheme                |
+| `nvim-lualine/lualine.nvim`     | Statusline with icons and theming     |
+| `akinsho/bufferline.nvim`       | Visual buffer tabline                 |
+| `nvim-tree/nvim-web-devicons`   | Filetype icons                        |
+| `folke/which-key.nvim`          | Popup keybinding hints                |
+| `echasnovski/mini.icons`        | Optional icon enhancements            |
+| `folke/snacks.nvim`             | Scratchpad and Git UI tools           |
+| `nvim-telescope/telescope.nvim` | File browser, fuzzy file, finder tool |
 
 ### 🔤 Syntax & Treesitter
 

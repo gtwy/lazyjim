@@ -1,4 +1,4 @@
--- luacheck: globals vim
+-- luacheck: globals vim Snacks
 return {
 	-- Core Telescope
 	{
@@ -48,18 +48,15 @@ return {
 			local keymap = vim.keymap.set
 			local opts = { noremap = true, silent = true, desc = "" }
 
-			keymap(
-				"n",
-				"<leader>ff",
-				"<cmd>Telescope find_files<CR>",
-				vim.tbl_extend("force", opts, { desc = "Find files" })
-			)
-			keymap(
-				"n",
-				"<leader>fg",
-				"<cmd>Telescope live_grep<CR>",
-				vim.tbl_extend("force", opts, { desc = "Grep project" })
-			)
+			keymap("n", "<leader>ff", function()
+				local root = Snacks.git.get_root() or vim.loop.cwd()
+				require("telescope.builtin").find_files({ cwd = root })
+			end, vim.tbl_extend("force", opts, { desc = "Find files" }))
+
+			keymap("n", "<leader>fg", function()
+				local root = Snacks.git.get_root() or vim.loop.cwd()
+				require("telescope.builtin").live_grep({ cwd = root })
+			end, vim.tbl_extend("force", opts, { desc = "Grep project" }))
 			keymap(
 				"n",
 				"<leader>bl",
@@ -98,12 +95,18 @@ return {
 			)
 
 			-- File Browser (project root or cwd)
-			keymap(
-				"n",
-				"<leader>E",
-				"<cmd>Telescope file_browser<CR>",
-				vim.tbl_extend("force", opts, { desc = "File browser (project root)" })
-			)
+			keymap("n", "<leader>E", function()
+				local root = Snacks.git.get_root()
+
+				require("telescope").extensions.file_browser.file_browser({
+					cwd = root,
+					respect_gitignore = false,
+					hidden = true,
+					grouped = true,
+					previewer = false,
+					initial_mode = "normal",
+				})
+			end, vim.tbl_extend("force", opts, { desc = "File browser (project root)" }))
 
 			-- File Browser (directory of current file)
 			keymap("n", "<leader>e", function()
