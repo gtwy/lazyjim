@@ -22,10 +22,44 @@ return {
         sh = { "shfmt" },
         php = { "php-cs-fixer" },
         lua = { "stylua" },
-        sql = { "sql-formatter" }, -- or "pg_format" if you prefer
+        sql = { "sql-formatter" },
         ["*"] = {},
+      },
+      formatters = {
+        stylua = {
+          prepend_args = {
+            "--indent-type",
+            "Spaces",
+            "--indent-width",
+            "2",
+          },
+        },
+        prettier = {
+          prepend_args = {
+            "--tab-width",
+            "2",
+            "--use-tabs",
+            "false",
+          },
+        },
+        shfmt = {
+          prepend_args = {
+            "-i",
+            "2",
+            "-ci",
+          },
+        },
+        ["php-cs-fixer"] = {
+          -- optional: add custom config path if needed
+          -- prepend_args = { "--config=some/path" }
+        },
+        ["sql-formatter"] = {
+          prepend_args = {
+            "--indent",
+            "  ", -- two literal spaces
+          },
+        },
       },
     })
   end,
 }
-

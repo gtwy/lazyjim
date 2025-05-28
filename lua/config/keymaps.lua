@@ -10,14 +10,14 @@
 
 -- turn mouse on and off
 vim.keymap.set("n", "<leader>a", function()
-	local mouse_setting = vim.o.mouse
-	if mouse_setting == "" then
-		vim.opt.mouse = "a"
-		vim.notify("Mouse: ON")
-	else
-		vim.opt.mouse = ""
-		vim.notify("Mouse: OFF")
-	end
+  local mouse_setting = vim.o.mouse
+  if mouse_setting == "" then
+    vim.opt.mouse = "a"
+    vim.notify("Mouse: ON")
+  else
+    vim.opt.mouse = ""
+    vim.notify("Mouse: OFF")
+  end
 end, { desc = "Toggle mouse mode" })
 
 -- indent without reselect
@@ -26,7 +26,7 @@ vim.keymap.set("x", ">", ">gv", { noremap = true, silent = true })
 
 -- lint on key press
 vim.keymap.set("n", "<leader>ll", function()
-	require("lint").try_lint()
+  require("lint").try_lint()
 end, { desc = "Lint current file" })
 
 -- Replaced by telescope
@@ -45,30 +45,30 @@ end, { desc = "Lint current file" })
 
 -- Scratchpad
 vim.keymap.set("n", "<leader>ss", function()
-	require("snacks.scratch").open()
+  require("snacks.scratch").open()
 end, { desc = "Open Scratchpad" })
 
 -- Git signs toggle (statuscolumn handles display)
 vim.keymap.set("n", "<leader>gb", function()
-	require("snacks.git").blame_line()
+  require("snacks.git").blame_line()
 end, { desc = "Git for Current Line" })
 
 -- Numberlines toggle
 vim.keymap.set("n", "<leader>ln", function()
-	if vim.wo.number then
-		vim.wo.number = false
-		vim.wo.relativenumber = false
-	else
-		vim.wo.number = true
-		vim.wo.relativenumber = false
-	end
+  if vim.wo.number then
+    vim.wo.number = false
+    vim.wo.relativenumber = false
+  else
+    vim.wo.number = true
+    vim.wo.relativenumber = false
+  end
 end, { desc = "Toggle absolute lines" })
 vim.keymap.set("n", "<leader>lr", function()
-	if vim.wo.relativenumber then
-		vim.wo.relativenumber = false
-		vim.wo.number = false
-	else
-		vim.wo.relativenumber = true
-		vim.wo.number = false
-	end
+  if vim.wo.relativenumber then
+    vim.wo.relativenumber = false
+    vim.wo.number = false
+  else
+    vim.wo.relativenumber = true
+    vim.wo.number = false
+  end
 end, { desc = "Toggle relative lines" })
