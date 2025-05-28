@@ -29,18 +29,19 @@ vim.keymap.set("n", "<leader>l", function()
 	require("lint").try_lint()
 end, { desc = "Lint current file" })
 
--- Explorer toggle
-vim.keymap.set("n", "<leader>e", function()
-	require("snacks.explorer").open()
-end, { desc = "Toggle Explorer" })
-
--- File picker
-vim.keymap.set("n", "<leader>ff", function()
-	snacks.picker.files({ cwd = get_root() })
-end, { desc = "Find File" })
-vim.keymap.set("n", "<leader>fg", function()
-	snacks.picker.grep({ cwd = get_root() })
-end, { desc = "Grep in Files" })
+-- Replaced by telescope
+-- -- Explorer toggle
+-- vim.keymap.set("n", "<leader>e", function()
+-- 	require("snacks.explorer").open()
+-- end, { desc = "Toggle Explorer" })
+--
+-- -- File picker
+-- vim.keymap.set("n", "<leader>ff", function()
+-- 	snacks.picker.files({ cwd = get_root() })
+-- end, { desc = "Find File" })
+-- vim.keymap.set("n", "<leader>fg", function()
+-- 	snacks.picker.grep({ cwd = get_root() })
+-- end, { desc = "Grep in Files" })
 
 -- Scratchpad
 vim.keymap.set("n", "<leader>ss", function()
