@@ -177,10 +177,12 @@ sudo luarocks install luacheck
 
 ### 🎨 Nerd Fonts (for Ligatures)
 
-[Download fonts here](https://www.nerdfonts.com/font-downloads):
+Download fonts:
 
 - Monaspice Nerd Font
 - FiraCode Nerd Font
+
+[Get them here](https://www.nerdfonts.com/font-downloads)
 
 Extract, right click, `install for all users`
 
