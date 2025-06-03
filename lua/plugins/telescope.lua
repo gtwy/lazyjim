@@ -53,10 +53,10 @@ return {
         require("telescope.builtin").find_files({ cwd = root })
       end, vim.tbl_extend("force", opts, { desc = "Find files" }))
 
-      keymap("n", "<space><space>", function()
-        local root = Snacks.git.get_root() or vim.loop.cwd()
-        require("telescope.builtin").find_files({ cwd = root })
-      end, { noremap = true, silent = true })
+      -- keymap("n", "<space><space>", function()
+      --   local root = Snacks.git.get_root() or vim.loop.cwd()
+      --   require("telescope.builtin").find_files({ cwd = root })
+      -- end, { noremap = true, silent = true })
 
       keymap("n", "<leader>fg", function()
         local root = Snacks.git.get_root() or vim.loop.cwd()

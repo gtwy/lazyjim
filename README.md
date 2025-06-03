@@ -177,7 +177,7 @@ sudo luarocks install luacheck
 
 ### 🎨 Nerd Fonts (for Ligatures)
 
-I'm using `FiraCode Nerd Font Mono` 11-point Regular, with antialiasing enabled.
+I'm using `Monaspace Neon Nerd Font Mono` 11-point Regular, with antialiasing enabled.
 
 [Download it here](https://www.nerdfonts.com/font-downloads).
 
