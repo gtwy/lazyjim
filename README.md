@@ -177,9 +177,24 @@ sudo luarocks install luacheck
 
 ### 🎨 Nerd Fonts (for Ligatures)
 
-I'm using `Monaspace Neon Nerd Font Mono` 11-point Regular, with antialiasing enabled.
+[Download fonts here](https://www.nerdfonts.com/font-downloads):
 
-[Download it here](https://www.nerdfonts.com/font-downloads).
+- Monaspice Nerd Font
+- FiraCode Nerd Font
+
+Extract, right click, `install for all users`
+
+#### Laptop (14" 1440p)
+
+I'm using `Monaspice Neon Nerd Font Mono` 11-point Regular, with antialiasing enabled.
+
+#### Desktop (27" 1440p)
+
+I'm using `Monaspice Neon Nerd Font Mono` 12-point Light, with antialiasing enabled.
+
+### Other
+
+In close second is my second choice, `FiraCode Nerd Font Mono`, which I ran at 11-point regular on both systems.
 
 ## 🚀 Install lazyjim
 
