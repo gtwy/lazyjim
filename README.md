@@ -55,7 +55,9 @@ Uses format-on-save and is fully declarative by filetype.
 | PHP                         | `php-cs-fixer`  |
 | Lua                         | `stylua`        |
 | SQL                         | `sql-formatter` |
-| HTML/CSS/JSON/YAML/Markdown | `prettier`      |
+| CSS/JSON/YAML/Markdown      | `prettier`      |
+
+HTML is not format-on-save and is not prettier-formatted.
 
 > Formatters can live in Mason and/or `~/.local/bin`. Conform will use whichever is on `$PATH`.
 
@@ -144,6 +146,8 @@ sudo apt install neovim ripgrep git curl unzip fd-find
 `ripgrep` is for Telescope live grep. It is not required by snacks (picker/explorer/notify are off).
 
 Ubuntu's `fd-find` package installs the binary as `fdfind`, not `fd`. There is no `fd` symlink.
+
+The tree-sitter CLI (0.26+) must be on PATH. Ubuntu tree-sitter-cli 0.20.8 is too old.
 
 ### 🔗 Aliasing
 
