@@ -26,7 +26,15 @@ vim.keymap.set("x", ">", ">gv", { noremap = true, silent = true })
 
 -- lint on key press
 vim.keymap.set("n", "<leader>ll", function()
-  require("lint").try_lint()
+  local lint = require("lint")
+  local ft = vim.bo.filetype
+  local linters = lint.linters_by_ft[ft]
+  if not linters or #linters == 0 then
+    vim.notify("No linter for filetype: " .. (ft == "" and "(none)" or ft))
+    return
+  end
+  lint.try_lint()
+  vim.notify("Lint: " .. table.concat(linters, ", "))
 end, { desc = "Lint current file" })
 
 -- Replaced by telescope

@@ -38,6 +38,8 @@ This Neovim config is built from scratch using [lazy.nvim](https://github.com/fo
 | Plugin                                                    | Purpose                                       |
 | --------------------------------------------------------- | --------------------------------------------- |
 | `nvim-treesitter/nvim-treesitter`                         | Syntax highlighting via Tree-sitter           |
+
+Treesitter uses the Neovim 0.12 main API (`install` + `vim.treesitter.start`), not the old `configs.setup`.
 | `folke/ts-comments.nvim`                                  | Smarter `gc` comments (requires Neovim 0.10+) |
 | `numToStr/Comment.nvim` + `nvim-ts-context-commentstring` | Context-aware commenting for JSX/HTML/etc.    |
 
