@@ -79,8 +79,8 @@ Runs on `BufWritePost`, manually triggered via `<leader>ll`
 | ------------------------------------ | --------------------------------------------------------------------------- |
 | `Mason`                              | On first launch (after plugins load), installs ruff, black, prettier, eslint_d, stylua, shfmt, php-cs-fixer, sql-formatter, markdownlint, jsonlint, luacheck, and shellcheck. `:Mason` is the UI. `:MasonUpdate` refreshes the registry only; it does not install that list. |
 | `Ripgrep`                            | Used by Telescope `live_grep` (`<leader>fg`). Not required by snacks.       |
-| `fd` / `fdfind`                      | Optional. Speeds up Telescope `find_files`. Ubuntu's `fd-find` package installs `fdfind`, not `fd`. Telescope works without it. |
-| `shellcheck`                         | Optional. Only the shell linter (`sh` filetype). Not required for core editing. |
+| `fd` / `fdfind`                      | Speeds up Telescope `find_files`. Ubuntu's `fd-find` package installs `fdfind`, not `fd`. |
+| `shellcheck`                         | Shell linter (`sh` filetype). |
 | `Git`                                | Used by snacks' Git blame (`<leader>gb`) and Telescope project-root lookup  |
 | `luacheck`, `ruff`, `eslint_d`, etc. | Installed via system, Mason, and/or `~/.local/bin`                          |
 
@@ -136,20 +136,12 @@ Install neovim unstable repo and install from a nightly build. Also includes key
 ```bash
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
-sudo apt install neovim ripgrep git curl unzip
+sudo apt install neovim ripgrep git curl unzip fd-find
 ```
 
 `ripgrep` is for Telescope live grep. It is not required by snacks (picker/explorer/notify are off).
 
-Optional extras (not required for core editing; Telescope works without `fd`, and `shellcheck` is only the shell linter):
-
-```bash
-# Ubuntu ships the binary as fdfind, not fd. Do not assume a `fd` symlink.
-sudo apt install fd-find
-
-# Shell linter used by nvim-lint for `sh` files
-sudo apt install shellcheck
-```
+Ubuntu's `fd-find` package installs the binary as `fdfind`, not `fd`. There is no `fd` symlink.
 
 ### 🔗 Aliasing
 
@@ -177,7 +169,7 @@ It installs to `~/.local/share/nvim/lazy/lazy.nvim/`
 
 ### 🧪 Prerequisites
 
-The following packages enable linting, formatting, and language tooling. They are not all hard-required by the Lua config; skip what you do not use. `shellcheck` is only the shell linter (optional; see above). There is no apt package named `spellcheck`.
+The following packages enable linting, formatting, and language tooling. There is no apt package named `spellcheck`.
 
 ```bash
 sudo apt install \
@@ -187,7 +179,8 @@ sudo apt install \
   nodejs \
   npm \
   python3-pip \
-  luarocks
+  luarocks \
+  shellcheck
 ```
 
 As a user (not sudo or root), install these for linting and formatting python
