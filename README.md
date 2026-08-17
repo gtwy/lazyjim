@@ -147,7 +147,7 @@ sudo apt install neovim ripgrep git curl unzip fd-find
 
 Ubuntu's `fd-find` package installs the binary as `fdfind`, not `fd`. There is no `fd` symlink.
 
-The tree-sitter CLI (0.26+) must be on PATH. Ubuntu tree-sitter-cli 0.20.8 is too old.
+The tree-sitter CLI is installed with the node tools below, not with apt.
 
 ### 🔗 Aliasing
 
@@ -203,7 +203,8 @@ sudo npm install -g \
   eslint_d \
   jsonlint \
   markdownlint-cli \
-  sql-formatter
+  sql-formatter \
+  tree-sitter-cli
 ```
 
 Install luarocks linter
