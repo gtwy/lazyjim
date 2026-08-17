@@ -13,7 +13,7 @@ This Neovim config is built from scratch using [lazy.nvim](https://github.com/fo
 ### ⚙️ Plugin Manager
 
 - [`folke/lazy.nvim`](https://github.com/folke/lazy.nvim) — minimal, fast, Lua-based plugin manager
-  - Bootstrapped automatically on first launch
+  - Bootstrapped automatically on first launch (`init.lua` clones it if missing)
   - Plugin modules are declared in `lua/plugins/`
 
 ### 🎨 UI & UX Plugins
@@ -25,10 +25,11 @@ This Neovim config is built from scratch using [lazy.nvim](https://github.com/fo
 | `AlexvZyl/nordic.nvim`          | Light blue colorscheme                |
 | `nvim-lualine/lualine.nvim`     | Statusline with icons and theming     |
 | `akinsho/bufferline.nvim`       | Visual buffer tabline                 |
+| `moll/vim-bbye`                 | `:Bdelete` without closing the window |
 | `nvim-tree/nvim-web-devicons`   | Filetype icons                        |
 | `folke/which-key.nvim`          | Popup keybinding hints                |
 | `echasnovski/mini.icons`        | Optional icon enhancements            |
-| `folke/snacks.nvim`             | Scratchpad and Git UI tools           |
+| `folke/snacks.nvim`             | Scratchpad and Git blame (picker/explorer/notify off) |
 | `nvim-telescope/telescope.nvim` | File browser, fuzzy file, finder tool |
 | `folke/persistence.nvim`        | Automated session management          |
 
@@ -54,11 +55,11 @@ Uses format-on-save and is fully declarative by filetype.
 | SQL                         | `sql-formatter` |
 | HTML/CSS/JSON/YAML/Markdown | `prettier`      |
 
-> External tools installed via Mason or system packages
+> Formatters can live in Mason and/or `~/.local/bin`. Conform will use whichever is on `$PATH`.
 
 ### 🚨 Linting (`nvim-lint`)
 
-Runs on `BufWritePost`, manually triggered via `<leader>l`
+Runs on `BufWritePost`, manually triggered via `<leader>ll`
 
 | Filetype      | Linter         |
 | ------------- | -------------- |
@@ -70,35 +71,60 @@ Runs on `BufWritePost`, manually triggered via `<leader>l`
 | JSON          | `jsonlint`     |
 | Lua           | `luacheck`     |
 
+> Mason's `markdownlint` can crash on Node 18. The system `markdownlint` (e.g. `npm i -g markdownlint-cli`) works.
+
 ### 🧱 Developer Tools
 
-| Tool                                 | Description                                           |
-| ------------------------------------ | ----------------------------------------------------- |
-| `Mason`                              | Installs formatters/linters (auto-managed on startup) |
-| `Ripgrep` + `fd`                     | Required by snacks.nvim for fuzzy finding             |
-| `Git`                                | Used by snacks' Git integration (`blame_line`)        |
-| `luacheck`, `ruff`, `eslint_d`, etc. | Installed via system or `Mason`                       |
+| Tool                                 | Description                                                                 |
+| ------------------------------------ | --------------------------------------------------------------------------- |
+| `Mason`                              | Installs formatters/linters (auto-managed on startup). UI: `:Mason`. Registry: `:MasonUpdate`. |
+| `Ripgrep`                            | Used by Telescope `live_grep` (`<leader>fg`). Not required by snacks.       |
+| `fd` / `fdfind`                      | Optional. Speeds up Telescope `find_files`. Ubuntu's `fd-find` package installs `fdfind`, not `fd`. Telescope works without it. |
+| `shellcheck`                         | Optional. Only the shell linter (`sh` filetype). Not required for core editing. |
+| `Git`                                | Used by snacks' Git blame (`<leader>gb`) and Telescope project-root lookup  |
+| `luacheck`, `ruff`, `eslint_d`, etc. | Installed via system, Mason, and/or `~/.local/bin`                          |
 
 ### 🔧 General Settings
 
+- Leader: space (set in `init.lua`)
 - Tabs: 2 spaces, soft tabs, auto/smart indenting enabled
-- Mouse: Toggleable via `<leader>m` (default: off)
+- Mouse: off by default; toggle with `<leader>a`
 - Virtual diagnostics: only show for WARN+ (no inline INFO spam)
 - Disable auto-comment continuation
-- Lint key: `<leader>l`
-- File picker: `<leader>ff`
-- Grep picker: `<leader>fg`
-- Buffer deletion: `<leader>bd`
-- Explorer toggle: `<leader>e`
-- Scratchpad: `<leader>ss`
+- Restore cursor to last position when reopening a file
+
+### ⌨️ Keymaps
+
+| Key              | Action                                              |
+| ---------------- | --------------------------------------------------- |
+| `<leader>a`      | Toggle mouse                                        |
+| `<leader>ll`     | Lint current file                                   |
+| `<leader>ff`     | Telescope find files (git root)                     |
+| `<leader>fg`     | Telescope live grep (git root; needs ripgrep)       |
+| `<leader>e`      | Telescope file browser (current file's directory)   |
+| `<leader>E`      | Telescope file browser (git root)                   |
+| `<leader>bl`     | Telescope buffers                                   |
+| `<leader>fr`     | Telescope recent files                              |
+| `<leader>fh`     | Telescope help tags                                 |
+| `<leader>lc`     | Telescope commands                                  |
+| `<leader>bd`     | `:Bdelete` (vim-bbye; closes buffer, keeps window)  |
+| `<Tab>` / `<S-Tab>` | Next / previous buffer (bufferline)              |
+| `<leader>ss`     | Open snacks scratchpad                              |
+| `<leader>gb`     | Git blame current line (snacks)                     |
+| `<leader>ln`     | Toggle absolute line numbers                        |
+| `<leader>lr`     | Toggle relative line numbers                        |
+| `<leader>qs`     | Restore session for this directory (persistence)    |
+| `<leader>ql`     | Restore last session (persistence)                  |
+| visual `<` / `>` | Indent / outdent and keep the selection             |
 
 ### 🔧 Folder Structure
 
 ```text
 ~/.config/nvim/
-├── init.lua# Entry point, bootstraps lazy + core config
-└── lua/ ├── config/ # keymaps.lua, settings.lua
-└── plugins/ # plugin modules (treesitter, formatting, etc.)
+├── init.lua            # Entry point, bootstraps lazy + core config
+└── lua/
+    ├── config/         # keymaps.lua, settings.lua
+    └── plugins/        # plugin modules (treesitter, formatting, etc.)
 ```
 
 ## 💾 Installation and Prerequisites
@@ -110,7 +136,19 @@ Install neovim unstable repo and install from a nightly build. Also includes key
 ```bash
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
-sudo apt install neovim ripgrep fd-find git curl unzip
+sudo apt install neovim ripgrep git curl unzip
+```
+
+`ripgrep` is for Telescope live grep. It is not required by snacks (picker/explorer/notify are off).
+
+Optional extras (not required for core editing; Telescope works without `fd`, and `shellcheck` is only the shell linter):
+
+```bash
+# Ubuntu ships the binary as fdfind, not fd. Do not assume a `fd` symlink.
+sudo apt install fd-find
+
+# Shell linter used by nvim-lint for `sh` files
+sudo apt install shellcheck
 ```
 
 ### 🔗 Aliasing
@@ -127,9 +165,10 @@ You may want to run `which vim` first to see if yours is actually in `/usr/bin/`
 
 ### 📦 Lazy.nvim Installation
 
-Install `lazy.nvim` plugin manager bare bones.
+`init.lua` already bootstraps `lazy.nvim` on first launch if it is missing. A manual clone is optional.
 
 ```bash
+# Optional: pre-install lazy.nvim yourself
 git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/lazy/lazy.nvim
 rm -rf ~/.local/share/nvim/lazy/lazy.nvim/.git
 ```
@@ -138,11 +177,10 @@ It installs to `~/.local/share/nvim/lazy/lazy.nvim/`
 
 ### 🧪 Prerequisites
 
-The following packages are needed to enable all functionality in my neovim stack, such as linting, formatting, etc.
+The following packages enable linting, formatting, and language tooling. They are not all hard-required by the Lua config; skip what you do not use. `shellcheck` is only the shell linter (optional; see above). There is no apt package named `spellcheck`.
 
 ```bash
 sudo apt install \
-  shellcheck \
   php-cli \
   php-cs-fixer \
   lua-check \
@@ -174,6 +212,8 @@ Install luarocks linter
 ```bash
 sudo luarocks install luacheck
 ```
+
+Many of these same tools can also be installed by Mason (auto on startup) and/or dropped in `~/.local/bin`. Mason's `markdownlint` can crash on Node 18; the system `markdownlint` from `markdownlint-cli` works.
 
 ### 🎨 Nerd Fonts (for Ligatures)
 
@@ -216,10 +256,13 @@ On first launch, you'll want to make sure Lazy.nvim installs your plugins, Mason
 Run the following commands inside neovim
 
 ```vim
-:Lazy Sync
-:Mason Update
+:Lazy sync
+:Mason
+:MasonUpdate
 :TSUpdate
 ```
+
+`:Lazy sync` is the valid command (`:Lazy Sync` with a capital S is not). `:Mason` opens the Mason UI. `:MasonUpdate` refreshes Mason's registry (there is no `:Mason Update` with a space).
 
 ## 📝 Todo
 
