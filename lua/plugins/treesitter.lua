@@ -2,6 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     enabled = true,
+    branch = "main",
     build = ":TSUpdate",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -38,7 +39,7 @@ return {
           table.insert(missing, name)
         end
       end
-      if #missing > 0 then
+      if #missing > 0 and type(ts.install) == "function" then
         ts.install(missing)
       end
 
