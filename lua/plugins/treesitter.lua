@@ -43,8 +43,14 @@ return {
       end
 
       -- indent stays off (no indentexpr)
+      -- html: treesitter highlight on an unclosed quote corrupts the display
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
+          local ft = vim.bo[args.buf].filetype
+          if ft == "html" then
+            pcall(vim.treesitter.stop, args.buf)
+            return
+          end
           pcall(vim.treesitter.start, args.buf)
         end,
       })
