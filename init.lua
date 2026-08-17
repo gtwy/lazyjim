@@ -1,3 +1,7 @@
+local termfeatures = vim.g.termfeatures or {}
+termfeatures.osc52 = false
+vim.g.termfeatures = termfeatures
+
 -- luacheck: globals vim
 -- ~/.config/nvim/init.lua
 
