@@ -77,7 +77,7 @@ Runs on `BufWritePost`, manually triggered via `<leader>ll`
 
 | Tool                                 | Description                                                                 |
 | ------------------------------------ | --------------------------------------------------------------------------- |
-| `Mason`                              | Installs formatters/linters (auto-managed on startup). UI: `:Mason`. Registry: `:MasonUpdate`. |
+| `Mason`                              | On first launch (after plugins load), installs ruff, black, prettier, eslint_d, stylua, shfmt, php-cs-fixer, sql-formatter, markdownlint, jsonlint, luacheck, and shellcheck. `:Mason` is the UI. `:MasonUpdate` refreshes the registry only; it does not install that list. |
 | `Ripgrep`                            | Used by Telescope `live_grep` (`<leader>fg`). Not required by snacks.       |
 | `fd` / `fdfind`                      | Optional. Speeds up Telescope `find_files`. Ubuntu's `fd-find` package installs `fdfind`, not `fd`. Telescope works without it. |
 | `shellcheck`                         | Optional. Only the shell linter (`sh` filetype). Not required for core editing. |
@@ -213,7 +213,7 @@ Install luarocks linter
 sudo luarocks install luacheck
 ```
 
-Many of these same tools can also be installed by Mason (auto on startup) and/or dropped in `~/.local/bin`. Mason's `markdownlint` can crash on Node 18; the system `markdownlint` from `markdownlint-cli` works.
+Many of these same tools (including shellcheck) are also installed by Mason on first launch after plugins load, and/or can be dropped in `~/.local/bin`. Mason's `markdownlint` can crash on Node 18; the system `markdownlint` from `markdownlint-cli` works.
 
 ### 🎨 Nerd Fonts (for Ligatures)
 
@@ -253,6 +253,8 @@ git clone https://github.com/gtwy/lazyjim ~/.config/nvim
 
 On first launch, you'll want to make sure Lazy.nvim installs your plugins, Mason installs required tools, and Treesitter downloads its language parsers.
 
+After plugins load, Mason installs this list if anything is missing: `ruff`, `black`, `prettier`, `eslint_d`, `stylua`, `shfmt`, `php-cs-fixer`, `sql-formatter`, `markdownlint`, `jsonlint`, `luacheck`, and `shellcheck`.
+
 Run the following commands inside neovim
 
 ```vim
@@ -262,7 +264,7 @@ Run the following commands inside neovim
 :TSUpdate
 ```
 
-`:Lazy sync` is the valid command (`:Lazy Sync` with a capital S is not). `:Mason` opens the Mason UI. `:MasonUpdate` refreshes Mason's registry (there is no `:Mason Update` with a space).
+`:Lazy sync` is the valid command (`:Lazy Sync` with a capital S is not). `:Mason` is the UI. `:MasonUpdate` refreshes Mason's registry only; it does not install the list above (there is no `:Mason Update` with a space). After these commands, Mason should start installing the tools (or they appear on the next launch if install is async).
 
 ## 📝 Todo
 

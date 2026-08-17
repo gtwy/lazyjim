@@ -1,11 +1,10 @@
 return {
   "williamboman/mason.nvim",
-  cmd = "Mason",
+  lazy = false,
   build = ":MasonUpdate",
   config = function()
     require("mason").setup()
 
-    -- Auto-install specific tools
     local registry = require("mason-registry")
 
     local ensure_installed = {
@@ -20,13 +19,23 @@ return {
       "markdownlint",
       "jsonlint",
       "luacheck",
+      "shellcheck",
     }
 
-    for _, tool in ipairs(ensure_installed) do
-      local ok, pkg = pcall(registry.get_package, tool)
-      if ok and not pkg:is_installed() then
-        pkg:install()
+    local function install_missing()
+      for _, tool in ipairs(ensure_installed) do
+        local ok, pkg = pcall(registry.get_package, tool)
+        if ok and pkg and not pkg:is_installed() and not pkg:is_installing() then
+          pkg:install()
+        end
       end
     end
+
+    -- Registry is not shipped in-plugin. Refresh first or get_package no-ops on a clean install.
+    registry.refresh(function(success)
+      if success then
+        install_missing()
+      end
+    end)
   end,
 }
