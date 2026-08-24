@@ -175,7 +175,7 @@ It installs to `~/.local/share/nvim/lazy/lazy.nvim/`
 
 ### 🧪 Prerequisites
 
-The following packages enable linting, formatting, and language tooling. There is no apt package named `spellcheck`.
+The following packages enable linting, formatting, and language tooling.
 
 ```bash
 sudo apt install \
