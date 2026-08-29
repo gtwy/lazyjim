@@ -6,6 +6,14 @@ I initially tried LazyVim, but found that some of its defaults - like aggressive
 
 This repo documents my personal Neovim configuration. It's tailored to my preferences, but feel free to explore, use, or suggest improvements.
 
+<p align="center">
+  <img src="docs/lazyjim-1.png" alt="which-key overlay in a Python buffer">
+</p>
+<p align="center">
+  <img src="docs/lazyjim-2.png" alt="Telescope live grep" width="48%">
+  <img src="docs/lazyjim-3.png" alt="Telescope file browser" width="48%">
+</p>
+
 ## 🧰 Tech Stack
 
 This Neovim config is built from scratch using [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugin manager. It favors a minimalist, scriptable, and fast editing environment without the heavy abstractions of prebuilt frameworks like LazyVim.
